@@ -1,0 +1,7 @@
+Wrappers and config files for standard Fedora/EL tools modified to suit my own
+needs. The intention is to largely imitate the important parts of the Fedora
+build process but without all the bells and whistles.
+
+These tools are made available under the MIT License for ease of reuse. See
+LICENSING for more information.
+

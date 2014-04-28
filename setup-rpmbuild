@@ -1,0 +1,16 @@
+#!/bin/bash
+
+RPMBUILD=~/rpmbuild
+pkglist=( rpm-build gcc redhat-rpm-config )
+
+# source our common library
+. ${HOME}/bin/common-lib.sh
+
+mkdir -p ${RPMBUILD}/{BUILD,BUILDROOT,RPMS/{athlon,i386,i486,i586,i686,noarch,x86_64},SOURCES,SPECS,SRPMS}
+
+sudo yum install -y ${pkglist[@]}
+
+# insert vanilla RPM spec file here
+#rm -f ${RPMBUILD}/SPECS/*.spec
+#svn co https://localhost/svn/rpms/${branch}/SPECS ${RPMBUILD}/SPECS
+

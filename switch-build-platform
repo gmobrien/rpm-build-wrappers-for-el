@@ -1,0 +1,24 @@
+#!/bin/bash
+printf "Disabled, no longer supporting EL5.\n"
+exit 1
+
+# source our common library
+. ${HOME}/bin/common-lib.sh
+
+switch() {
+  r=$1
+  macros=".rpmmacros-el${r}"
+  builddir="rpmbuild-el${r}"
+  echo "Switching to build for RHEL${r}"
+  rm -f ~/{.rpmmacros,rpmbuild}
+  ( cd ~ && ln -sv ${macros} .rpmmacros && ln -sv ${builddir} rpmbuild )
+}
+
+if [ "${__osrelease}" == "5" ]; then
+  switch ${__osrelease}
+elif [ "${__osrelease}" == "6" ]; then
+  switch ${__osrelease}
+else
+  __die_1 "Exiting: unable to determine OS release."
+fi
+
